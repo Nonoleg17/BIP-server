@@ -1,14 +1,18 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from rest_framework import generics
+from .serializers import PersonalDataDetailSerializer, PersonalDataViewSerializer
 from .models import PersonalData
 
 
 # Create your views here.
-def start_work(request):
-    # t = PersonalData.objects.create(uid='213', name='123', surname='123',group='123')
-    # t.save()
-    if request.method == 'GET':
-        print(request.GET)
-    else:
-        print(request.POST)
-    return HttpResponse('ok')
+class PersonalDataCreateView(generics.CreateAPIView):
+    serializer_class = PersonalDataDetailSerializer
+
+
+class PersonalDataView(generics.ListAPIView):
+    serializer_class = PersonalDataViewSerializer
+    queryset = PersonalData.objects.all()
+
+
+class PersonalDataDetailView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = PersonalDataDetailSerializer
+    queryset = PersonalData.objects.all()
