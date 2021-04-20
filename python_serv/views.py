@@ -4,8 +4,8 @@ from .models import PersonalData
 
 
 # Create your views here.
-class PersonalDataCreateView(generics.CreateAPIView):
-    serializer_class = PersonalDataDetailSerializer
+'''class PersonalDataCreateView(generics.CreateAPIView):
+    serializer_class = PersonalDataDetailSerializer'''
 
 
 class PersonalDataView(generics.ListAPIView):
